@@ -43,6 +43,18 @@ public class CompanyAccountDAO {
         stm.executeUpdate();
     }
 
+    public void update(CompanyAccount companyAccount) throws SQLException {
+
+        PreparedStatement stm = connection.prepareStatement("UPDATE t_company_accounts SET owner_id = ?, company_name = ?, company_identifier = ? WHERE id = ?");
+        stm.setString(1, companyAccount.getOwner().getId().toString());
+        stm.setString(2, companyAccount.getCompanyName());
+        stm.setString(3, companyAccount.getCompanyIdentifier());
+        stm.setString(4, companyAccount.getId().toString());
+
+
+        stm.executeUpdate();
+    }
+
     public CompanyAccount findById(UUID id) throws SQLException {
         PreparedStatement stm = connection.prepareStatement("SELECT * FROM t_company_accounts WHERE id = ?");
         stm.setString(1, id.toString());

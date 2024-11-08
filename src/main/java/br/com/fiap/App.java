@@ -78,6 +78,9 @@ public class App {
                     case 15:
                         DeleteTransactionsView.execute(sc, transactionDao);
                         break;
+                    case 16:
+                        UpdateCompanyAccountView.execute(sc, userDao,companyAccountDao);
+                        break;
                     case 0:
                         System.out.println("Exiting...");
                         break;
